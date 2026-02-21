@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { Plus, Trash2, CheckCircle, Circle, LogOut, Calendar } from 'lucide-react';
 import Logo from '../components/Logo';
+import Footer from '../components/Footer';
 
 interface Task {
     id: string;
@@ -182,6 +183,7 @@ const Dashboard = () => {
                     </div>
                 )}
             </div>
+            <Footer minimal />
         </div>
     );
 };

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, Rocket, Users, Globe, Github, Linkedin, Mail, ExternalLink, Code } from 'lucide-react';
+import { Lock, Rocket, Users, Globe } from 'lucide-react';
 import Logo from '../components/Logo';
+import Footer from '../components/Footer';
 
 const Landing: React.FC = () => {
     return (
@@ -70,37 +71,7 @@ const Landing: React.FC = () => {
             </section>
 
             {/* Footer */}
-            <footer className="footer">
-                <div className="footer-content">
-                    <div className="footer-brand">
-                        <Logo size={28} />
-                        <p>Building the future of secure collaboration.</p>
-                    </div>
-                    <div className="footer-links">
-                        <h4>Connect with Developer</h4>
-                        <div className="social-links">
-                            <a href="https://github.com/Bharath-Kumar-K-0930" target="_blank" rel="noopener noreferrer">
-                                <Github size={20} /> GitHub
-                            </a>
-                            <a href="https://www.linkedin.com/in/bharath-kumar-k-b35ba0304" target="_blank" rel="noopener noreferrer">
-                                <Linkedin size={20} /> LinkedIn
-                            </a>
-                            <a href="https://leetcode.com/u/Bharath_Kumar_K_91/" target="_blank" rel="noopener noreferrer">
-                                <Code size={20} /> LeetCode
-                            </a>
-                            <a href="https://bharath-kumar-k-0930.github.io/My_Portfolio_website/" target="_blank" rel="noopener noreferrer">
-                                <ExternalLink size={20} /> Portfolio
-                            </a>
-                            <a href="mailto:bharathkumatkbk10@gmail.com">
-                                <Mail size={20} /> Email
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div className="footer-bottom">
-                    <p>&copy; {new Date().getFullYear()} SecureNest. Designed by Bharath Kumar K.</p>
-                </div>
-            </footer>
+            <Footer />
         </div>
     );
 };
