@@ -73,18 +73,18 @@ const Dashboard = () => {
     return (
         <div className="app-container">
             <div className="dashboard">
-                <header className="dashboard-header animate-fade" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <header className="dashboard-header animate-fade">
+                    <div className="dashboard-brand">
                         <Logo size={40} showText={false} />
-                        <div className="user-info">
+                        <div className="user-profile">
                             <div className="avatar">{user?.name[0].toUpperCase()}</div>
-                            <div>
+                            <div className="user-details">
                                 <h2>{user?.name}</h2>
-                                <p style={{ color: 'var(--text-muted)' }}>{user?.email} • {user?.role}</p>
+                                <p>{user?.email} • {user?.role}</p>
                             </div>
                         </div>
                     </div>
-                    <button onClick={logout} className="btn" style={{ width: 'auto', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444' }}>
+                    <button onClick={logout} className="logout-btn">
                         <LogOut size={18} /> Logout
                     </button>
                 </header>
