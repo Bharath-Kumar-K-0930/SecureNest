@@ -98,76 +98,82 @@ const Dashboard = () => {
                     </button>
                 </header>
 
-                <div className="glass-card" style={{ marginBottom: '2rem' }}>
-                    <h3>Create New Task</h3>
-                    <form onSubmit={handleCreateTask} style={{ marginTop: '1rem' }}>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                className="form-control"
-                                placeholder="Task Title"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="form-group">
-                            <textarea
-                                className="form-control"
-                                placeholder="Description (Optional)"
-                                rows={2}
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                            />
-                        </div>
-                        <button type="submit" className="btn btn-primary" style={{ width: 'auto' }} disabled={actionLoading}>
-                            {actionLoading ? 'Creating...' : <><Plus size={18} /> Add Task</>}
-                        </button>
-                    </form>
-                </div>
-
-                {loading ? (
-                    <div style={{ textAlign: 'center', padding: '3rem' }}>Loading tasks...</div>
-                ) : (
-                    <div className="task-grid">
-                        {tasks.map((task) => (
-                            <div key={task.id} className="glass-card task-card animate-fade">
-                                <div className={`task-status ${task.status === 'COMPLETED' ? 'status-completed' : 'status-pending'}`}>
-                                    {task.status}
+                <main className="dashboard-content">
+                    <section className="create-task-section animate-fade">
+                        <div className="glass-card">
+                            <h3>Create New Task</h3>
+                            <form onSubmit={handleCreateTask} style={{ marginTop: '1rem' }}>
+                                <div className="form-group">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Task Title"
+                                        value={title}
+                                        onChange={(e) => setTitle(e.target.value)}
+                                        required
+                                    />
                                 </div>
-                                <div className="task-content">
-                                    <h3>{task.title}</h3>
-                                    <p>{task.description || 'No description provided.'}</p>
-                                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                                        <Calendar size={12} /> {new Date(task.createdAt).toLocaleDateString()}
+                                <div className="form-group">
+                                    <textarea
+                                        className="form-control"
+                                        placeholder="Description (Optional)"
+                                        rows={2}
+                                        value={description}
+                                        onChange={(e) => setDescription(e.target.value)}
+                                    />
+                                </div>
+                                <button type="submit" className="btn btn-primary" style={{ width: 'auto' }} disabled={actionLoading}>
+                                    {actionLoading ? 'Creating...' : <><Plus size={18} /> Add Task</>}
+                                </button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <section className="tasks-section animate-fade">
+                        {loading ? (
+                            <div style={{ textAlign: 'center', padding: '3rem' }}>Loading tasks...</div>
+                        ) : (
+                            <div className="task-grid">
+                                {tasks.map((task) => (
+                                    <div key={task.id} className="glass-card task-card">
+                                        <div className={`task-status ${task.status === 'COMPLETED' ? 'status-completed' : 'status-pending'}`}>
+                                            {task.status}
+                                        </div>
+                                        <div className="task-content">
+                                            <h3>{task.title}</h3>
+                                            <p>{task.description || 'No description provided.'}</p>
+                                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                                                <Calendar size={12} /> {new Date(task.createdAt).toLocaleDateString()}
+                                            </div>
+                                        </div>
+                                        <div className="task-actions">
+                                            <button
+                                                className="btn btn-icon"
+                                                title={task.status === 'COMPLETED' ? 'Mark as Pending' : 'Mark as Completed'}
+                                                onClick={() => toggleTaskStatus(task)}
+                                            >
+                                                {task.status === 'COMPLETED' ? <Circle size={18} /> : <CheckCircle size={18} />}
+                                            </button>
+                                            <button
+                                                className="btn btn-icon btn-delete"
+                                                title="Delete Task"
+                                                onClick={() => deleteTask(task.id)}
+                                            >
+                                                <Trash2 size={18} />
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="task-actions">
-                                    <button
-                                        className="btn btn-icon"
-                                        title={task.status === 'COMPLETED' ? 'Mark as Pending' : 'Mark as Completed'}
-                                        onClick={() => toggleTaskStatus(task)}
-                                    >
-                                        {task.status === 'COMPLETED' ? <Circle size={18} /> : <CheckCircle size={18} />}
-                                    </button>
-                                    <button
-                                        className="btn btn-icon btn-delete"
-                                        title="Delete Task"
-                                        onClick={() => deleteTask(task.id)}
-                                    >
-                                        <Trash2 size={18} />
-                                    </button>
-                                </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-                )}
+                        )}
 
-                {tasks.length === 0 && !loading && (
-                    <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
-                        No tasks found. Start by creating one!
-                    </div>
-                )}
+                        {tasks.length === 0 && !loading && (
+                            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
+                                No tasks found. Start by creating one!
+                            </div>
+                        )}
+                    </section>
+                </main>
 
                 {notification && (
                     <div className={`popup-msg popup-${notification.type}`}>
