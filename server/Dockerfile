@@ -10,6 +10,8 @@ RUN npm install
 
 COPY . .
 
+# Fix for "Permission denied" error during prisma generate
+RUN chmod +x node_modules/.bin/prisma
 RUN npx prisma generate
 RUN npm run build
 
