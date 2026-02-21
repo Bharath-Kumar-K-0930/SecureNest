@@ -3,8 +3,6 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-ENV PRISMA_CLIENT_ENGINE_TYPE=library
-
 COPY package*.json ./
 COPY prisma ./prisma/
 
@@ -14,7 +12,7 @@ COPY . .
 
 # Fix for "Permission denied" error during prisma generate
 RUN chmod +x node_modules/.bin/prisma
-RUN DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder" npx prisma generate
+RUN npx prisma generate
 RUN npm run build
 
 # Production stage
@@ -22,14 +20,10 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Force Prisma to use the library engine
-ENV PRISMA_CLIENT_ENGINE_TYPE=library
-
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package*.json ./
 COPY --from=build /app/prisma ./prisma
-COPY --from=build /app/prisma.config.ts ./
 
 EXPOSE 5000
 
