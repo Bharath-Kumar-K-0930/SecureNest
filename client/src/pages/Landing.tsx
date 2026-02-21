@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, NestingDoll as Nest, Lock, Rocket, Users, Globe, Github, Linkedin, Mail, ExternalLink, Code } from 'lucide-react';
+import { Shield, Box as Nest, Lock, Rocket, Users, Globe, Github, Linkedin, Mail, ExternalLink, Code } from 'lucide-react';
 
 const Landing: React.FC = () => {
     return (
