@@ -261,7 +261,11 @@ body {
 }
 
 .landing-container {
-    background: radial-gradient(circle at top right, #1a2a4a, #0a0a0c);
+    background: linear-gradient(rgba(10, 10, 12, 0.85), rgba(10, 10, 12, 0.95)),
+        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     min-height: 100vh;
     overflow-x: hidden;
 }
