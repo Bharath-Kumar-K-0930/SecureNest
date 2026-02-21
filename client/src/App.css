@@ -249,6 +249,14 @@ body {
     margin: 0 auto;
 }
 
+.create-task-section .glass-card {
+    background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.9)),
+        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(0, 255, 132, 0.2);
+}
+
 .tasks-section {
     width: 100%;
 }
@@ -341,11 +349,20 @@ body {
     height: 100%;
     transition: all 0.3s ease;
     cursor: default;
+    background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.9)),
+        url('https://images.unsplash.com/photo-1510511459019-5dee1a166317?auto=format&fit=crop&q=80&w=600');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .task-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(rgba(5, 5, 5, 0.7), rgba(5, 5, 5, 0.85)),
+        url('https://images.unsplash.com/photo-1510511459019-5dee1a166317?auto=format&fit=crop&q=80&w=600');
+    background-size: cover;
+    background-position: center;
     border-color: var(--primary);
 }
 
