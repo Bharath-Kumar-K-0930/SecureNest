@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { Plus, Trash2, CheckCircle, Circle, LogOut, Calendar } from 'lucide-react';
+import Logo from '../components/Logo';
 
 interface Task {
     id: string;
@@ -72,12 +73,15 @@ const Dashboard = () => {
     return (
         <div className="app-container">
             <div className="dashboard">
-                <header className="dashboard-header animate-fade">
-                    <div className="user-info">
-                        <div className="avatar">{user?.name[0].toUpperCase()}</div>
-                        <div>
-                            <h2>{user?.name}</h2>
-                            <p style={{ color: 'var(--text-muted)' }}>{user?.email} • {user?.role}</p>
+                <header className="dashboard-header animate-fade" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                        <Logo size={40} showText={false} />
+                        <div className="user-info">
+                            <div className="avatar">{user?.name[0].toUpperCase()}</div>
+                            <div>
+                                <h2>{user?.name}</h2>
+                                <p style={{ color: 'var(--text-muted)' }}>{user?.email} • {user?.role}</p>
+                            </div>
                         </div>
                     </div>
                     <button onClick={logout} className="btn" style={{ width: 'auto', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444' }}>

@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
 import { LogIn, Mail, Lock } from 'lucide-react';
+import Logo from '../components/Logo';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -32,9 +33,9 @@ const Login = () => {
     return (
         <div className="auth-page">
             <div className="glass-card auth-card animate-fade">
-                <div className="auth-header">
-                    <h1>SecureNest</h1>
-                    <p>Welcome back! Please enter your details.</p>
+                <div className="auth-header" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem' }}>
+                    <Logo size={40} className="mb-4" />
+                    <p style={{ marginTop: '10px' }}>Welcome back! Please enter your details.</p>
                 </div>
 
                 {error && <div style={{ color: 'var(--error)', marginBottom: '1rem', textAlign: 'center' }}>{error}</div>}

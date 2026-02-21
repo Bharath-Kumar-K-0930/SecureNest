@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import { UserPlus, Mail, Lock, User as UserIcon, Shield } from 'lucide-react';
+import Logo from '../components/Logo';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -36,9 +37,9 @@ const Register = () => {
     return (
         <div className="auth-page">
             <div className="glass-card auth-card animate-fade">
-                <div className="auth-header">
-                    <h1>Register</h1>
-                    <p>Join SecureNest and manage your tasks securely.</p>
+                <div className="auth-header" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '2rem' }}>
+                    <Logo size={40} className="mb-4" />
+                    <p style={{ marginTop: '10px' }}>Join SecureNest and manage your tasks securely.</p>
                 </div>
 
                 {error && <div style={{ color: 'var(--error)', marginBottom: '1rem', textAlign: 'center' }}>{error}</div>}

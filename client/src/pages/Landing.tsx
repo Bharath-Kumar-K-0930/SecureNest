@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Box as Nest, Lock, Rocket, Users, Globe, Github, Linkedin, Mail, ExternalLink, Code } from 'lucide-react';
+import { Lock, Rocket, Users, Globe, Github, Linkedin, Mail, ExternalLink, Code } from 'lucide-react';
+import Logo from '../components/Logo';
 
 const Landing: React.FC = () => {
     return (
         <div className="landing-container">
             {/* Navigation */}
             <nav className="landing-nav">
-                <div className="logo-container">
-                    <Shield className="logo-icon-shield" />
-                    <Nest className="logo-icon-nest" />
-                    <span className="logo-text">SecureNest</span>
-                </div>
+                <Logo size={36} />
                 <div className="nav-links">
                     <Link to="/login" className="nav-btn-secondary">Login</Link>
                     <Link to="/register" className="nav-btn-primary">Get Started</Link>
@@ -76,10 +73,7 @@ const Landing: React.FC = () => {
             <footer className="footer">
                 <div className="footer-content">
                     <div className="footer-brand">
-                        <div className="logo-container">
-                            <Shield className="logo-icon-shield-small" />
-                            <span className="logo-text">SecureNest</span>
-                        </div>
+                        <Logo size={28} />
                         <p>Building the future of secure collaboration.</p>
                     </div>
                     <div className="footer-links">
