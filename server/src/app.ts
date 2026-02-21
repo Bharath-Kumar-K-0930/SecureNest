@@ -42,6 +42,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// Health check route for Render/deployment
+app.get('/', (req, res) => {
+    res.status(200).json({ status: 'ok', message: 'SecureNest API is running' });
+});
+
 // API Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
