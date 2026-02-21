@@ -3,6 +3,8 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
+ENV PRISMA_CLIENT_ENGINE_TYPE=library
+
 COPY package*.json ./
 COPY prisma ./prisma/
 
@@ -19,6 +21,9 @@ RUN npm run build
 FROM node:20-alpine
 
 WORKDIR /app
+
+# Force Prisma to use the library engine
+ENV PRISMA_CLIENT_ENGINE_TYPE=library
 
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
