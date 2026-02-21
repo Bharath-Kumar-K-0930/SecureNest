@@ -19,6 +19,12 @@ const Dashboard = () => {
     const [description, setDescription] = useState('');
     const [loading, setLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState(false);
+    const [notification, setNotification] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+    const showNotification = (message: string, type: 'success' | 'error') => {
+        setNotification({ message, type });
+        setTimeout(() => setNotification(null), 3000);
+    };
 
     useEffect(() => {
         fetchTasks();
@@ -43,8 +49,9 @@ const Dashboard = () => {
             setTasks([response.data.data, ...tasks]);
             setTitle('');
             setDescription('');
+            showNotification('Task created successfully!', 'success');
         } catch (err) {
-            alert('Failed to create task');
+            showNotification('Failed to create task', 'error');
         } finally {
             setActionLoading(false);
         }
@@ -55,8 +62,9 @@ const Dashboard = () => {
         try {
             const response = await api.put(`/tasks/${task.id}`, { status: newStatus });
             setTasks(tasks.map((t) => (t.id === task.id ? response.data.data : t)));
+            showNotification(`Task marked as ${newStatus.toLowerCase()}`, 'success');
         } catch (err) {
-            alert('Failed to update task');
+            showNotification('Failed to update task', 'error');
         }
     };
 
@@ -65,8 +73,9 @@ const Dashboard = () => {
         try {
             await api.delete(`/tasks/${id}`);
             setTasks(tasks.filter((t) => t.id !== id));
+            showNotification('Task deleted successfully', 'success');
         } catch (err) {
-            alert('Failed to delete task');
+            showNotification('Failed to delete task', 'error');
         }
     };
 
@@ -157,6 +166,13 @@ const Dashboard = () => {
                 {tasks.length === 0 && !loading && (
                     <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
                         No tasks found. Start by creating one!
+                    </div>
+                )}
+
+                {notification && (
+                    <div className={`popup-msg popup-${notification.type}`}>
+                        {notification.type === 'success' ? <CheckCircle size={18} /> : <Trash2 size={18} />}
+                        {notification.message}
                     </div>
                 )}
             </div>

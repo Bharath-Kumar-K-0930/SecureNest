@@ -32,8 +32,11 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: radial-gradient(circle at top right, rgba(0, 255, 132, 0.08), transparent 40%),
-        radial-gradient(circle at bottom left, rgba(29, 233, 182, 0.05), transparent 40%);
+    background: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.95)),
+        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 /* Glassmorphism Classes */
@@ -58,6 +61,64 @@ body {
 .auth-card {
     width: 100%;
     max-width: 400px;
+}
+
+/* Popup Notifications Stylings */
+.popup-msg {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--primary);
+    color: white;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    pointer-events: none;
+    animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popup-error {
+    border-color: var(--error);
+    background: rgba(255, 82, 82, 0.05);
+    color: #ff8a80;
+}
+
+.popup-success {
+    border-color: var(--success);
+    background: rgba(0, 255, 132, 0.05);
+    color: #b9f6ca;
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(-20px) translateX(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+}
+
+.error-alert {
+    background: rgba(255, 82, 82, 0.1);
+    border-left: 4px solid var(--error);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #ff8a80;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .auth-header {

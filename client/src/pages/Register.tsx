@@ -42,7 +42,11 @@ const Register = () => {
                     <p style={{ marginTop: '10px' }}>Join SecureNest and manage your tasks securely.</p>
                 </div>
 
-                {error && <div style={{ color: 'var(--error)', marginBottom: '1rem', textAlign: 'center' }}>{error}</div>}
+                {error && (
+                    <div className="error-alert animate-fade">
+                        <Shield size={16} /> {error}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

@@ -38,7 +38,11 @@ const Login = () => {
                     <p style={{ marginTop: '10px' }}>Welcome back! Please enter your details.</p>
                 </div>
 
-                {error && <div style={{ color: 'var(--error)', marginBottom: '1rem', textAlign: 'center' }}>{error}</div>}
+                {error && (
+                    <div className="error-alert animate-fade">
+                        <Lock size={16} /> {error}
+                    </div>
+                )}
 
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
