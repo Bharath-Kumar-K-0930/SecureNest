@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
-import { Plus, Trash2, CheckCircle, Circle, LogOut, Calendar } from 'lucide-react';
+import { Plus, Trash2, CheckCircle, Circle, LogOut, Calendar, ShieldAlert, ShieldCheck, Ghost } from 'lucide-react';
 import Logo from '../components/Logo';
 import Footer from '../components/Footer';
 
@@ -36,7 +36,7 @@ const Dashboard = () => {
             const response = await api.get('/tasks');
             setTasks(response.data.data);
         } catch (err) {
-            console.error('Failed to fetch tasks');
+            showNotification('Failed to sync tasks with secure server', 'error');
         } finally {
             setLoading(false);
         }
@@ -132,12 +132,16 @@ const Dashboard = () => {
 
                     <section className="tasks-section animate-fade">
                         {loading ? (
-                            <div style={{ textAlign: 'center', padding: '3rem' }}>Loading tasks...</div>
+                            <div className="loading-tasks">
+                                <div className="spinner"></div>
+                                <p>Securing Connection...</p>
+                            </div>
                         ) : (
                             <div className="task-grid">
                                 {tasks.map((task) => (
                                     <div key={task.id} className="glass-card task-card">
                                         <div className={`task-status ${task.status === 'COMPLETED' ? 'status-completed' : 'status-pending'}`}>
+                                            {task.status === 'COMPLETED' ? <ShieldCheck size={10} style={{ marginRight: '4px' }} /> : <ShieldAlert size={10} style={{ marginRight: '4px' }} />}
                                             {task.status}
                                         </div>
                                         <div className="task-content">
@@ -169,8 +173,12 @@ const Dashboard = () => {
                         )}
 
                         {tasks.length === 0 && !loading && (
-                            <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
-                                No tasks found. Start by creating one!
+                            <div className="empty-tasks animate-fade">
+                                <Ghost size={64} className="empty-icon" />
+                                <div>
+                                    <h3>Your Nest is Empty</h3>
+                                    <p>No active security tasks found. Add your first task above to start monitoring.</p>
+                                </div>
                             </div>
                         )}
                     </section>
