@@ -788,7 +788,7 @@ body {
 /* Footer */
 .footer {
     background: #050507;
-    padding: 5rem 10% 2rem;
+    padding: 3rem 10% 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -797,8 +797,8 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 3rem;
-    margin-bottom: 4rem;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .footer-brand {
@@ -809,12 +809,12 @@ body {
 
 .footer-brand p {
     color: #888;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     max-width: 400px;
 }
 
 .footer-links h4 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     color: #fff;
     text-align: center;
 }
