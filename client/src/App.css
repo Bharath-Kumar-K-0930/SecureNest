@@ -1064,8 +1064,9 @@ body {
 .flicker-green {
     color: var(--primary);
     font-weight: 600;
-    text-shadow: 0 0 5px rgba(0, 255, 132, 0.2);
+    text-shadow: 0 0 3px rgba(0, 255, 132, 0.1);
     animation: greenFlicker 3s infinite;
+    opacity: 0.8;
 }
 
 @keyframes greenFlicker {
@@ -1078,16 +1079,15 @@ body {
     57%,
     100% {
         text-shadow:
-            0 0 4px var(--primary),
-            0 0 11px var(--primary),
-            0 0 19px var(--primary);
-        opacity: 1;
+            0 0 3px var(--primary),
+            0 0 7px rgba(0, 255, 132, 0.4);
+        opacity: 0.8;
     }
 
     20%,
     24%,
     55% {
         text-shadow: none;
-        opacity: 0.5;
+        opacity: 0.4;
     }
 }
