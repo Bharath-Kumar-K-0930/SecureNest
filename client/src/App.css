@@ -1059,3 +1059,35 @@ body {
         transform: rotate(360deg);
     }
 }
+
+/* Green Flickering Animation */
+.flicker-green {
+    color: var(--primary);
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(0, 255, 132, 0.2);
+    animation: greenFlicker 3s infinite;
+}
+
+@keyframes greenFlicker {
+
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        text-shadow:
+            0 0 4px var(--primary),
+            0 0 11px var(--primary),
+            0 0 19px var(--primary);
+        opacity: 1;
+    }
+
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+        opacity: 0.5;
+    }
+}

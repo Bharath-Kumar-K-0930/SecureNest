@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ minimal = false }) => {
         return (
             <footer className="footer-minimal">
                 <div className="footer-minimal-content">
-                    <p>&copy; {year} SecureNest. Developed by Bharath Kumar K.</p>
+                    <p>&copy; {year} SecureNest. Developed by <span className="flicker-green">Bharath Kumar K</span>.</p>
                     <div className="social-icons-minimal">
                         <a href="https://github.com/Bharath-Kumar-K-0930" target="_blank" rel="noopener noreferrer" title="GitHub"><Github size={16} /></a>
                         <a href="https://www.linkedin.com/in/bharath-kumar-k-b35ba0304" target="_blank" rel="noopener noreferrer" title="LinkedIn"><Linkedin size={16} /></a>
@@ -44,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ minimal = false }) => {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>&copy; {year} SecureNest. Designed by Bharath Kumar K.</p>
+                <p>&copy; {year} SecureNest. Designed by <span className="flicker-green">Bharath Kumar K</span>.</p>
             </div>
         </footer>
     );
